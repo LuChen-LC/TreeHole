@@ -1,0 +1,155 @@
+body {
+  padding: 50px;
+  font: 20px "方正姚体", Helvetica, Arial, sans-serif;
+  background-image: url('../images/treebg1.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  width:100vw;
+  height:100vh;
+  overflow-x: hidden;
+}
+a:hover{
+    text-decoration:none;
+    color: black;
+}
+nav{
+  height:50px;
+}
+#example-navbar-collapse {
+  background-color: #0f0f0f;
+}
+#example-navbar-collapse a{
+  font-size: 16px;
+  color: #87abbb;
+  padding-left: 20px;
+}
+#example-navbar-collapse a:hover{
+  color: white;
+  text-shadow: white 0 0 0;
+  text-decoration: none;
+}
+h2.page-header{
+  border-bottom: 1px solid #0f0f0f;
+}
+form{
+  margin-top: 4vh;
+}
+form div label span{
+  font-size: 2rem;
+}
+.glyphicon-tree-conifer{
+  font-size: 2.5rem;
+}
+li.list-group-item{
+  padding-bottom: 5px;
+}
+.container .panel-body div>p{
+  margin-top: 0;
+}
+div.only{
+  -webkit-box-shadow: none;
+  margin-bottom: 0;
+}
+.paddingleft{
+  margin-top:10px;
+  padding-left:15px;
+  /*height:1.7rem;*/
+  font-size: 16px;
+  /*white-space: nowrap;*/
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 1; /** 显示的行数 **/
+  overflow: hidden;  /** 隐藏超出的内容 **/
+}
+
+@media screen and (max-width:320px){
+  .widthfixed{
+    width:188px;
+  }
+}
+.only .panel-body,.only .panel-heading,.widthfixed .panel-heading{
+  padding:10px 5px 0 15px;
+  word-break: break-all;
+  line-height: 30px;
+  text-overflow: ellipsis;
+  display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 1; /** 显示的行数 **/
+  overflow: hidden;  /** 隐藏超出的内容 **/
+}
+.only .panel-title span,.panel-title span{
+  font-size: 0.1rem;
+  color: gray;
+}
+div.only p{
+  margin-top:20px;
+  margin-bottom: 0;
+}
+.widthfixed .panel-body{
+  padding-bottom:5px;
+  line-height: 30px;
+}
+.widthfixed .panel-body .paddingleft{
+  margin-top: 15px;
+}
+.usual .panel-body p.paddingleft1{
+  margin-top:0;
+  margin-bottom: 0;
+}
+.usual hr{
+  width:100%;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  border: none;
+  height: 1px;
+  background-color: gray;
+}
+.paddingleft1 p{
+  display: inline;
+  line-height: 25px;
+}
+.btn-group {
+  float: right;
+}
+ul li{
+  opacity:0.8;
+}
+.fixbottom{
+  width:100%;
+}
+.clock{
+  padding-top: 0;
+}
+.clear{
+  clear:both;
+}
+.paging{
+  font-weight: bold;
+  font-size:16px;
+  color: #fff;
+}
+footer{
+  margin-top: 60px;
+}
+img[alt='#']{
+  width:100px;
+  height:100px;
+  border: 2px solid #87abbb;
+  border-radius: 3px;
+}
+img[alt='#1']{
+  width:6rem;
+  height:6rem;
+  border: 2px solid #87abbb;
+  border-radius: 3px;
+  margin-top: 20px;
+}
+li>div.item:first-of-type,li>div.item:nth-of-type(2){
+  margin-bottom: 10px;
+}
+
+
+

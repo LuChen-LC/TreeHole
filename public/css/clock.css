@@ -1,0 +1,38 @@
+.clock,.clock span,.date{
+    box-sizing: border-box;
+}
+.clock{
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    text-align: center;
+    background-color: #87abbb;
+    box-shadow: 0 0 8px black inset;
+    border-radius: 8px;
+    padding-top: 15px;
+}
+.clock span{
+    display: inline-block;
+    text-align: center;
+}
+.num{
+    width: 25px;
+    height: 20px;
+    line-height: 20px;
+    background-color: white;
+    border-radius: 6px;
+    color: black;
+}
+.txt{
+    width: 20px;
+    height: 15px;
+    background-color: #87abbb;
+    color: white;
+}
+.date{
+    font-size: 16px;
+    /*height: 15px;*/
+    font-weight: bold;
+    color: white;
+    line-height: 22px;
+}

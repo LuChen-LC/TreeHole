@@ -1,0 +1,20 @@
+<%- include header %>
+<%- include headerOne %>
+<h2 class="text-center page-header">搜索结果</h2>
+<ul class="list-group col-md-8 col-md-offset-2">
+    <% if(reports.length == 0) { %>
+    <li class="list-group-item col-md-12 widthfixed">
+        <h4>没有搜索到相关信息哦~请确认关键字重新查找</h4>
+    </li>
+    <% } %>
+    <% reports.forEach(function (report) { %>
+    <li class="list-group-item col-md-12 widthfixed">
+        <h4><%= report.time %>&#x3000;<%= report.name %>&#x3000;
+            <strong>标题:
+                <a href="/u/<%= report.name %>/<%= report.time %>/<%= report.title %>"><%= report.title %></a>
+            </strong>
+        </h4>
+    </li>
+    <% }) %>
+</ul>
+<%- include footer %>

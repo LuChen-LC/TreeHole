@@ -1,0 +1,35 @@
+<%- include header %>
+<%- include headerTwo.ejs%>
+<form method="post" class="form-horizontal">
+  <h2 class="text-center page-header">想开启您的专属树洞吗?那先挖洞吧</h2>
+    <% if (error) { %>
+  <div class="form-group text-center text-danger">提示:<%= error %> </div>
+    <% } %>
+  <div class="form-group">
+    <label for="name" class="col-sm-3 control-label"><span class="glyphicon glyphicon-tree-conifer"></span></label>
+    <div class="col-sm-9">
+      <input type="text" name="name" id="name" class="form-control regName" required placeholder="设置树洞名"><br>
+      <p id="regName"></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-sm-3 control-label"><span class="glyphicon glyphicon-eye-close"></span></label>
+    <div class="col-sm-9">
+      <input type="password" name="password" id="password" class="form-control regPsd" required placeholder="设置树洞钥匙"><br>
+      <p id="regPsd"></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="repassword" class="col-sm-3 control-label"><span class="glyphicon glyphicon-eye-close"></span></label>
+    <div class="col-sm-9">
+      <input type="password" name="repassword" id="repassword" class="form-control regRePsd" required placeholder="请再次确认钥匙"><br>
+      <p id="regRePsd"></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-6 col-sm-10">
+      <button type="submit" class="btn btn-success" id="register" disabled="disabled">挖洞</button>
+    </div>
+  </div>
+</form>
+<%- include footer%>

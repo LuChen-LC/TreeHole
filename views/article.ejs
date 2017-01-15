@@ -1,0 +1,31 @@
+<%- include header %>
+<%- include headerOne %>
+<h2 class="text-center page-header"><%= report.title %>的详情</h2>
+<% if (message) { %>
+<div class="form-group text-center text-success"><%= message %> </div>
+<% } %>
+<div class="col-md-3 text-center">
+    <img src="/uploads/<%= report.imgUrl %>" alt="#1" onerror="this.src='uploads/default.jpg'"><br><br>
+    <a href="/userInfo?userName=<%= report.name %>"><%= report.name %></a>
+</div>
+<div class="col-md-7 widthfixed">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <strong><%= report.title %></strong>
+                <span><% if(report.weather) {%>[天气:<%= report.weather %>]<% } %><% if(report.feeling) {%>[心情:<%= report.feeling %>]<% } %><% if(report.site) {%>[地点:<%= report.site %>]<% } %></span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12"><strong><%- report.report %></strong></div>
+            <p class="paddingleft"><%= report.time %>&#x3000;阅读<%= report.pv %>次|评论<%= comments.length %>条&#x3000;
+            <% if(currentUser && (currentUser.name==report.name)) { %>
+                <a href="/edit/<%= report.name %>/<%= report.time %>/<%= report.title%>" class="btn btn-success btn-xs active">编辑</a>
+                <a href="/del/<%= report.name %>/<%= report.time %>/<%= report.title %>" class="btn btn-danger btn-xs active">删除</a>
+            </p>
+            <% } %>
+        </div>
+    </div>
+</div>
+<%- include comment %>
+<%- include footer %>

@@ -1,0 +1,33 @@
+<%- include header %>
+<%- include headerTwo %>
+<form method="post" class="form-horizontal">
+    <h2 class="text-center page-header">欢迎来到开启树洞页面</h2>
+    <% if (error) { %>
+    <div class="form-group text-center text-danger">提示:<%= error %> </div>
+    <% } %>
+    <% if (message) { %>
+    <div class="form-group text-center text-success">提示:<%= message %> </div>
+    <% } %>
+    <div class="form-group">
+        <label for="name" class="col-sm-3 control-label"><span class="glyphicon glyphicon-tree-conifer"></span></label>
+        <div class="col-sm-9">
+            <input type="text" name="name" id="name" class="form-control logName" placeholder="树洞名" required><br>
+            <p id="logName"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-3 control-label"><span class="glyphicon glyphicon-eye-close"></span></label>
+        <div class="col-sm-9">
+            <input type="password" name="password" id="password" class="form-control logPsd" placeholder="树洞钥匙" required><br>
+            <p id="logPsd"></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-6 col-sm-10">
+            <button type="submit" class="btn btn-success" id="login" disabled="disabled">开启</button>
+        </div>
+    </div>
+</form>
+
+
+<%- include footer %>

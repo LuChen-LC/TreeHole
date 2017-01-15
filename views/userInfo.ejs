@@ -1,0 +1,95 @@
+
+<%- include header %>
+<%- include headerOne %>
+<h2 class="text-center page-header">藏密者<%= user.name %>的信息</h2>
+<% if(error){ %>
+<div class="form-group text-center text-danger"><%= error %></div>
+<% } %>
+<% if(message){ %>
+<div class="form-group text-center text-success"><%= message %></div>
+<% } %>
+<form method="post" class="form-horizontal" enctype="multipart/form-data">
+    <div class="col-md-9 col-md-offset-3">
+        <img src="/uploads/<%= user.imgUrl %>" alt="#" onerror="this.src='uploads/default.jpg'"><br><br>
+    </div>
+    <div class="form-group">
+        <label for="name" class="col-sm-3 control-label">树洞名:</label>
+        <div class="col-sm-9">
+            <input type="text" name="name" id="name" class="form-control" value="<%= user.name %>" disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sign" class="col-sm-3 control-label">签名:</label>
+        <div class="col-sm-9">
+            <input type="text" name="sign" id="sign" class="form-control" placeholder="nothing yet" value="<%= user.signature %>" disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="intro" class="col-sm-3 control-label">个人介绍:</label>
+        <div class="col-sm-9">
+            <input type="text" name="intro" id="intro" class="form-control" placeholder="很神秘的藏密者" value="<%= user.introduction %>" disabled="disabled">
+        </div>
+    </div>
+    <% if(currentUser && user.name == currentUser.name){ %>
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-10">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">编辑信息</button>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">编辑信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="photo" class="col-sm-3 control-label">头像:</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="photo" id="photo" class="form-control" value="<%= currentUser.imgUrl %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-3 control-label">树洞名:</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="name" id="name" class="form-control" value="<%= currentUser.name %>" disabled="disabled">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="open" class="col-sm-3 control-label">首个树洞开启时间:</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="open" id="open" class="form-control" value="<%= currentUser.regTime %>" disabled="disabled">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sign" class="col-sm-3 control-label">签名:</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="sign" id="sign" class="form-control" value="<%= user.signature %>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="intro" class="col-sm-3 control-label">个人介绍:</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="intro" id="intro" class="form-control" value="<%= user.introduction %>">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">保存修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+
+</form>
+
+
+
+
+
+<%- include footer %>

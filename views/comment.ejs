@@ -1,0 +1,83 @@
+<br>
+<!--留言的展示-->
+<div class=" col-md-7 col-md-offset-3 usual">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <strong>留言区</strong>
+            </div>
+        </div>
+        <div class="panel-body">
+            <% if(comments.length == 0){ %>
+                <div class="paddingleft1">暂无评论,快来抢沙发~</div>
+            <% } %>
+            <% comments.forEach(function (comment,index) { %>
+                <div class="paddingleft1">
+                    <%= comment.time %>&#x3000;藏密者<%= comment.name %>回复藏密者<%= comment.bname %>:&#x3000;<%- comment.content %>
+                    <% if(currentUser && currentUser.name == report.name ) { %>
+                    <div class="btn-group btn-group-xs">
+                        <a type="button" class="btn btn-success btn-group-xs" data-toggle="modal" data-target="#myModal1">回复</a>
+                        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">回复藏密者<%= comment.name %></h4>
+                                    </div>
+                                    <form class="form-horizontal" method="post" action="/comment/<%= currentUser.name %>/<%= comment.name %>/<%= report.time %>/<%= report.title %>">
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="content" class="col-sm-3 control-label">回复内容:</label>
+                                                <div class="col-sm-7">
+                                                    <textarea type="text" class="form-control" rows="8" name="content" id="content" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                            <button type="submit" class="btn btn-primary">提交</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/delCom/<%= comment.name %>/<%= comment.bname %>/<%= report.title%>/<%= comment.time %>" type="button" class="btn btn-danger btn-xs">删除</a>
+                    </div>
+                    <% } %>
+                </div>
+                <hr>
+            <% }) %>
+        </div>
+    </div>
+</div>
+<!--留言的表单-->
+<%if(currentUser){%>
+<form method="post" class="col-md-7 col-md-offset-3" action="/comment/<%= currentUser.name %>/<%= report.name %>/<%= report.time %>/<%= report.title %>">
+    藏密者:<%= currentUser.name %><br>
+    <input type="hidden" name="name" value="<%= report.name %>"><br>
+    <textarea name="content" rows="5" class="form-control" placeholder="写下想对ta说的话吧……"></textarea><br>
+    <input type="submit" value="提交啦" class="btn btn-success">
+</form>
+<% }else{ %>
+<form method="post" class="col-md-7 col-md-offset-3">
+    <div>
+        评论请先 <a href="/login">进洞</a> 或 <a href="/regist">挖洞</a>
+    </div><br>
+    <textarea name="content" class="form-control" rows="5" id="tb" placeholder="写下想对ta说的话吧……"></textarea><br>
+    <input type="submit" value="提交啦" id="sb" class="btn btn-success">
+</form>
+<script>
+    window.onload=function () {
+        var textarea=document.querySelector('#tb');
+        var button=document.querySelector('#sb');
+        button.onclick=function (e) {
+            e.preventDefault();
+            location.href='/login';
+        }
+        textarea.onfocus=function () {
+            location.href='/login'
+        }
+    }
+</script>
+<% } %>
+

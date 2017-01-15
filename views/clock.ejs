@@ -1,0 +1,47 @@
+<div class="item">
+  <div class="clock">
+    <p class="date"></p>
+    <span class="num"></span>
+    <span class="txt">点</span>
+    <span class="num"></span>
+    <span class="txt">分</span>
+  </div>
+</div>
+<script>
+    var spans = document.querySelectorAll('span.num');
+    var pdate = document.querySelectorAll('p.date');
+    //console.dir(spans)
+    function timeClock () {
+        var today = new Date();
+        var hour = today.getHours();
+        var minute = today.getMinutes();
+        spans[0].innerHTML = hour < 10? '0'+ hour : hour;
+        spans[1].innerHTML = minute < 10? '0'+ minute : minute;
+        var year = today.getFullYear();
+        console.log('year='+year);
+        var month = today.getMonth();
+        var day = today.getDate();
+        var week = today.getDay();
+        switch (week){
+            case 0: week = '日';
+                break;
+            case 1: week = '一';
+                break;
+            case 2: week = '二';
+                break;
+            case 3: week = '三';
+                break;
+            case 4: week = '四';
+                break;
+            case 5: week = '五';
+                break;
+            default: week = '六';
+                break;
+        };
+
+        pdate[0].innerHTML = year+'年'+((month+1)<10?'0'+(month+1):(month+1))+'月'
+            +day+'日'+'<br>'+'星期'+week;
+    };
+    timeClock();
+    setInterval(timeClock,1000*60);
+</script>

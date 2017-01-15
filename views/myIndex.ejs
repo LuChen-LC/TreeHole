@@ -1,0 +1,67 @@
+<%- include header %>
+<ul class="nav navbar-nav navbar-left">
+<li><a href="/myindex">我的树洞</a></li>
+</ul>
+<form class="navbar-form navbar-nav" action="/search" method="get">
+    <div class="form-group">
+        <input type="text" name="keyword" class="form-control" placeholder="输入藏密者或标题">
+    </div>
+</form>
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="/userInfo?userName=<%= currentUser.name %>"><%= currentUser.name %></a></li>
+    <li><a href="/logout">出洞</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container">
+    <h2 class="text-center page-header">我的树洞</h2>
+    <ul class="list-group col-md-8">
+        <% if(reports.length == 0){ %>
+        <li class="list-group-item col-md-12 widthfixed">
+            <div>你的树洞空空如也~快去 <a href="/report">藏个小秘密 </a>吧~</div>
+        </li>
+        <% } %>
+        <% reports.forEach(function (report,index) { %>
+        <li class="list-group-item col-md-12 widthfixed">
+            <div class="col-md-2 text-center">
+                <img src="/uploads/<%= report.imgUrl %>" alt="#1" onerror="this.src='uploads/default.jpg'"><br><br>
+                <a href="#"><%= report.name %></a>
+            </div>
+            <div class="panel col-md-10 only">
+                <div class="panel-heading col-md-12">
+                    <div class="panel-title">
+                        <h3><a href="/u/<%= report.name %>/<%= report.time %>/<%= report.title %>"><%= report.title %></a></h3>
+                        <span><% if(report.weather) {%>[天气:<%= report.weather %>]<% } %><% if(report.feeling) {%>[心情:<%= report.feeling %>]<% } %><% if(report.site) {%>[地点:<%= report.site %>]<% } %></span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div><%- report.report %></div>
+                </div>
+                <p class="paddingleft"><%= report.time %>&#x3000;阅读<%= report.pv %>次
+                    <a href="/edit/<%= report.name %>/<%= report.time %>/<%= report.title%>" class="btn btn-success btn-xs active">编辑</a>
+                    <a href="/del/<%= report.name %>/<%= report.time %>/<%= report.title %>" class="btn btn-danger btn-xs active">删除</a></p>
+            </div>
+        </li>
+        <% }) %>
+
+    </ul>
+
+    <ul class="list-group col-md-4">
+        <li class="list-group-item">
+            <div class="item">
+                <img src="/uploads/<%= currentUser.imgUrl %>" alt="#" onerror="this.src='uploads/default.jpg'">
+            </div>
+            <div class="item"><%= currentUser.name %>,欢迎回到树洞</div>
+            <div class="item"><p><%- currentUser.signature %></p></div>
+            <div class="item"><p><%- currentUser.introduction %></p></div>
+            <div class="item">首个树洞开启时间:<%= currentUser.regTime %></div>
+            <%- include clock %>
+        </li>
+    </ul>
+</div>
+<div class="text-center col-md-8 paging">
+    <%- include page %>
+</div>
+<div class="clear"></div>
+<%- include footer %>

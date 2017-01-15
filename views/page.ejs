@@ -1,0 +1,62 @@
+<ul class="pagination pagination-centered">
+  <!--处理数字显示个数-->
+    <% var prevNum = 10; var nextNum=10; %>
+    <% if(page - pageCurrent > 5){ %>
+    <% prevNum = 5 %>
+    <% } else { %>
+    <% prevNum = prevNum - (page - pageCurrent) %>
+    <% } %>
+    <% if(pageCurrent - 5 > 0){ %>
+    <% nextNum = 5 %>
+    <% } else { %>
+    <% nextNum = nextNum - (pageCurrent) %>
+    <% } %>
+    <% if((page - pageCurrent > 5) && (pageCurrent - 5 > 0)){ %>
+    <% prevNum = 5 %>
+    <% nextNum = 4 %>
+    <% } %>
+  <!--处理数字显示个数 end-->
+  <li class="disabled"><a href="javascript:void(0)"> 共<%= total %>条</a></li>
+  <li class="disabled"><a href="javascript:void(0)"> 总<%= page %> 页 </a></li>
+    <% if(total == 0){ %>
+  <li class="disabled"><a href="javascript:void(0)">首页</a></li>
+    <% }else{ %>
+  <li><a href="?current=1">首页</a></li>
+    <% } %>
+  <!--判断有没有前一页-->
+    <% if(pageCurrent == 1){ %>
+  <li class="disabled"><a href="javascript:void(0)">上一页</a></li>
+    <% }else{ %>
+    <% if(total == 0){ %>
+  <li class="disabled"><a href="javascript:void(0)">上一页</a></li>
+    <% }else{ %>
+  <li><a href="?current=<%= parseInt(pageCurrent)-1 %>">上一页</a></li>
+    <% } %>
+    <% } %>
+  <!--循环显示页码-->
+    <% for(var i = prevNum; i > 0; i--){ %>
+    <%  if( parseInt(pageCurrent)-i > 0 ) { %>
+  <li><a href="?current=<%= parseInt(pageCurrent)-i %>"><%= (parseInt(pageCurrent)-i) %></a></li>
+    <% }} %>
+  <li class="active"><a href="?current=<%=pageCurrent%>" ><%= pageCurrent %></a></li>
+    <% for(var i = 1; i <=nextNum; i++){ %>
+    <%  if( parseInt(pageCurrent)+i <= page ) { %>
+  <li><a href="?current=<%= parseInt(pageCurrent)+i %>"><%= parseInt(pageCurrent)+i %></a></li>
+    <% }} %>
+  <!--判断有没有下一页-->
+    <% if(pageCurrent == page){ %>
+  <li class="disabled"><a href="javascript:void(0)">下一页</a></li>
+    <% }else{ %>
+    <% if(total == 0){ %>
+  <li class="disabled"><a href="javascript:void(0)">下一页</a></li>
+    <% }else{ %>
+  <li><a  href="?current=<%=parseInt(pageCurrent)+1 %>">下一页</a></li>
+    <% } %>
+
+    <% } %>
+    <% if(total == 0){ %>
+  <li class="disabled"><a href="javascript:void(0)">尾页</a></li>
+    <% }else{ %>
+  <li><a href="?current=<%= page %>">尾页</a></li>
+    <% } %>
+</ul>

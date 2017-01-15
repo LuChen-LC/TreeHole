@@ -1,0 +1,61 @@
+<%- include header %>
+<ul class="nav navbar-nav navbar-left">
+<li><a href="/myindex">我的树洞</a></li>
+</ul>
+<form class="navbar-form navbar-nav">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search here...">
+  </div>
+</form>
+<ul class="nav navbar-nav navbar-right">
+  <li><a href="/userInfo"><%= currentUser.name %></a></li>
+  <li><a href="/logout">出洞</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container">
+<form method="post" class="form-horizontal">
+  <h2 class="text-center page-header">准备埋下你的小秘密啦</h2>
+    <% if (error) { %>
+  <div class="form-group text-center text-danger">提示:<%= error %> </div>
+    <% } %>
+  <div class="form-group">
+    <label for="title" class="col-sm-3 control-label">标题:</label>
+    <div class="col-sm-3">
+      <input type="text" name="title" id="title" class="form-control" placeholder="标题栏，必填">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="weather" class="col-sm-3 control-label">天气:</label>
+    <div class="col-sm-3">
+      <input type="text" name="weather" id="weather" class="form-control" placeholder="现在天气怎么样呢(最多7个字)">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="feeling" class="col-sm-3 control-label">心情:</label>
+    <div class="col-sm-3">
+      <input type="text" name="feeling" id="feeling" class="form-control" placeholder="开心吗">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="site" class="col-sm-3 control-label">地点:</label>
+    <div class="col-sm-3">
+      <input type="text" name="site" id="site" class="form-control" placeholder="你在哪儿？">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="report" class="col-sm-3 control-label">内容:</label>
+    <div class="col-sm-6">
+      <textarea type="text" name="report" id="report" class="form-control" rows="10"
+                placeholder="开始写小秘密吧"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-10">
+      <button type="submit" class="btn btn-success btn-lg">埋下</button>
+    </div>
+  </div>
+</form>
+
+<%- include footer %>
